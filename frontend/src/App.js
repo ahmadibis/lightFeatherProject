@@ -23,7 +23,11 @@ function App() {
     <div className="App">
       {!failureMessage && !successMessage ? 'Fetching...' : null}
       {failureMessage ? failureMessage : null}
-      {successMessage ? successMessage : null}
+      {successMessage ? (
+        <div>
+          <span>SUCCESS</span> {successMessage}
+        </div>
+      ) : null}
     </div>
   );
 }

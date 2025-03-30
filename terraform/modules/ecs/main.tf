@@ -28,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy" {
 }
 
 
-# CW Log group for FE
+# Cloudwatch Log group for FE
 resource "aws_cloudwatch_log_group" "frontend" {
   name = "/ecs/${var.project_name}-frontend"
 
@@ -37,7 +37,7 @@ resource "aws_cloudwatch_log_group" "frontend" {
   }
 }
 
-# CW Log group for BE
+# Cloudwatch Log group for BE
 resource "aws_cloudwatch_log_group" "backend" {
   name = "/ecs/${var.project_name}-backend"
 

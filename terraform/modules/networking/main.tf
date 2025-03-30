@@ -78,3 +78,16 @@ resource "aws_route_table_association" "private" {
   subnet_id      = aws_subnet.private[count.index].id
   route_table_id = aws_route_table.private.id
 }
+
+resource "aws_vpc_endpoint" "ecr_dkr" {
+  vpc_id       = aws_vpc.main.id
+  service_name = "com.amazonaws.${var.aws_region}.ecr.dkr"
+
+  tags = {
+    Name = "${var.project_name}-ecr-dkr"
+  }
+}
+
+# resource "aws_vpc_endpoint" "ecr_api" {
+  
+# }

@@ -97,7 +97,7 @@ resource "aws_ecs_task_definition" "backend" {
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
 
   container_definitions = jsonencode([{
-    name      = "frontend"
+    name      = "backend"
     image     = var.backend_image
     essential = true
 
@@ -183,7 +183,7 @@ resource "aws_lb" "frontend" {
   name               = "${var.project_name}-fe-alb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = ["var.alb_sg_id"]
+  security_groups    = [var.alb_sg_id]
   subnets            = var.public
 
   depends_on = [ var.alb_sg_id ]
@@ -237,7 +237,7 @@ resource "aws_lb" "backend" {
   name               = "${var.project_name}-be-alb"
   internal           = true
   load_balancer_type = "application"
-  security_groups    = ["var.alb_sg_id"]
+  security_groups    = [var.alb_sg_id]
   subnets            = var.private
 
   depends_on = [ var.alb_sg_id ]
